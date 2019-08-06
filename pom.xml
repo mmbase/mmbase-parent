@@ -51,8 +51,8 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
   </licenses>
 
   <scm>
-    <url>scm:git:git://git@github.com/mmbase/mmbase-parent.git</url>
-    <connection>${project.scm.url}</connection>
+    <url>https://github.com/mmbase/mmbase-parent</url>
+    <connection>scm:git:git://git@github.com/mmbase/mmbase-parent.git</connection>
     <developerConnection>${project.scm.connection}</developerConnection>
   </scm>
 
