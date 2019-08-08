@@ -24,7 +24,7 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
     <surefire.usefile>false</surefire.usefile>
     <surefire.fork.vmargs>-ea</surefire.fork.vmargs>
     <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
-    <javadoc.plugin.version>2.7</javadoc.plugin.version>
+    <javadoc.plugin.version>3.1.1</javadoc.plugin.version>
     <java.awt.headless>true</java.awt.headless>
   </properties>
 
@@ -242,8 +242,10 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
           <version>${javadoc.plugin.version}</version>
           <configuration>
             <maxmemory>1024</maxmemory>
-            <source>1.6</source>
+            <source>8</source>
+            <!--
             <stylesheetfile>${basedir}/src/main/javadoc-style/stylesheet.css</stylesheetfile>
+            -->
             <doctitle>${project.name} ${project.version}</doctitle>
             <windowtitle>${project.name} ${project.version} - API</windowtitle>
             <bottom>${project.name} ${project.version} - ${javadoctimestamp}</bottom>
@@ -253,12 +255,11 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
               <link>http://www.mmbase.org/api/trunk/mmbase-bridge/</link>
               <link>http://www.mmbase.org/api/trunk/mmbase-core/</link>
               <link>http://download.oracle.com/javase/7/docs/api/</link>
-              <link>http://download-llnw.oracle.com/javaee/5/api/</link>
               <link>http://download.oracle.com/docs/cd/E17802_01/products/products/jsp/jstl/1.1/docs/api/</link>
               <link>http://logging.apache.org/log4j/1.2/apidocs/</link>
               <link>http://commons.apache.org/fileupload/apidocs/</link>
-             <link>http://lucene.apache.org/java/3_4_0/api/all/</link>
-              <link>http://www.mozilla.org/rhino/apidocs/</link>
+              <link>http://lucene.apache.org/java/3_4_0/api/all/</link>
+              <link>http://mozilla.github.io/rhino/javadoc/</link>
             </links>
 
             <tags>
@@ -371,23 +372,12 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
           <forkMode>${surefire.fork.mode}</forkMode>
           <childDelegation>false</childDelegation>
           <argLine>${surefire.fork.vmargs}</argLine>
-          <systemPropertiesVariables>
+          <systemPropertyVariables>
             <java.awt.headless>${java.awt.headless}</java.awt.headless>
             <mmbase.defaultcloudcontext>mock:local</mmbase.defaultcloudcontext>
             <!-- TODO should not depend on system  default locale -->
             <user.language>en</user.language>
-            <java.util.logging.config.file>${basedir}/target/test-classes/logging.properties</java.util.logging.config.file>
-            <surefire.fork.vmargs>${surefire.fork.vmargs}</surefire.fork.vmargs>
-          </systemPropertiesVariables>
-          <check>
-            <branchRate>80</branchRate>
-            <lineRate>80</lineRate>
-            <haltOnFailure>true</haltOnFailure>
-            <totalBranchRate>80</totalBranchRate>
-            <totalLineRate>80</totalLineRate>
-            <packageLineRate>80</packageLineRate>
-            <packageBranchRate>80</packageBranchRate>
-          </check>
+          </systemPropertyVariables>
         </configuration>
       </plugin>
       <plugin>
