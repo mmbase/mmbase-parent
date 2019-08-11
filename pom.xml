@@ -521,6 +521,11 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
               <notimestamp>true</notimestamp>
             </configuration>
           </plugin>
+          <plugin>
+            <groupId>org.mmbase.maven</groupId>
+            <artifactId>mmbase-maven-plugin</artifactId>
+            <version>2.0.1</version>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -539,7 +544,7 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
   </distributionManagement>
   <repositories>
     <repository>
-      <id>mmbaes-ossrh</id>
+      <id>mmbase-ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
       <releases>
         <enabled>false</enabled>
