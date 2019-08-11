@@ -350,6 +350,11 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
             </tags>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -440,6 +445,19 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
     </plugins>
 
   </reporting>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.mmbase</groupId>
+        <artifactId>mmbase-bom</artifactId>
+        <version>2.0-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 
   <profiles>
     <profile>
