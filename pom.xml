@@ -537,5 +537,16 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
-
+  <repositories>
+    <repository>
+      <id>mmbaes-ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>
