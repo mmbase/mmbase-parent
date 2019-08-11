@@ -24,7 +24,6 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
     <surefire.usefile>false</surefire.usefile>
     <surefire.fork.vmargs>-ea</surefire.fork.vmargs>
     <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
-    <javadoc.plugin.version>3.1.1</javadoc.plugin.version>
     <java.awt.headless>true</java.awt.headless>
   </properties>
 
@@ -239,7 +238,7 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${javadoc.plugin.version}</version>
+          <version>3.1.1</version>
           <configuration>
             <maxmemory>1024</maxmemory>
             <source>8</source>
@@ -248,7 +247,7 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
             -->
             <doctitle>${project.name} ${project.version}</doctitle>
             <windowtitle>${project.name} ${project.version} - API</windowtitle>
-            <bottom>${project.name} ${project.version} - ${javadoctimestamp}</bottom>
+            <bottom>${project.name} ${project.version} - ${maven.build.timestamp}</bottom>
             <show>package</show>
             <links>
               <link>http://www.mmbase.org/api/trunk/mmbase-utils/</link>
@@ -355,6 +354,25 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.1.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.mmbase.maven</groupId>
+          <artifactId>mmbase-maven-plugin</artifactId>
+          <version>2.0.1</version>
+          <executions>
+            <execution>
+              <id>create-index-files</id>
+              <goals>
+                <goal>create-index-files</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>copy-web-resources</id>
+              <goals>
+                <goal>install-resources</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -384,23 +402,6 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
             <user.language>en</user.language>
           </systemPropertyVariables>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.keyboardsamurais.maven</groupId>
-        <artifactId>maven-timestamp-plugin</artifactId>
-        <version>1.0</version>
-        <configuration>
-          <propertyName>javadoctimestamp</propertyName>
-          <timestampPattern>yyyy-MM-dd'T'HH:mm</timestampPattern>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>create</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -520,11 +521,6 @@ Version $Id: pom.xml,v 1.8 2009/02/20 15:21:28 michiel Exp $
               <failOnError>false</failOnError>
               <notimestamp>true</notimestamp>
             </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.mmbase.maven</groupId>
-            <artifactId>mmbase-maven-plugin</artifactId>
-            <version>2.0.1</version>
           </plugin>
         </plugins>
       </build>
